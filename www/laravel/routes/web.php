@@ -22,6 +22,7 @@
 
 Route::get('/', 'TweetController@index');
 Route::post('/tweet', 'TweetController@store');
+Route::get('/tweet/{tweet}', 'TweetController@show');
 	
 
 
