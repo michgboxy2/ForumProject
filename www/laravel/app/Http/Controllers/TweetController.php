@@ -11,7 +11,8 @@ class TweetController extends Controller
     public function index()
 
     {
-    	return view('tweet.index');
+    	$tweet = tweet::all();
+    	return view('tweet.index', compact('tweet'));
     }
 
 
@@ -19,18 +20,28 @@ class TweetController extends Controller
     public function store()
 
     {
-    	$tweet = new tweet;
 
-    	tweet::create(
+    	$this->validate(request(), [
 
-    		 [
-
-    		'tweet' => request('tweet')
+    		'tweet' => 'required'
 
     		]);
 
+    	$tweet = new tweet;
+
+    	tweet::create(request(['tweet']));
+    	
     	return redirect('/');
 
+    }
+
+
+    public function show($id)
+
+    {
+    	$tweet = tweet::find($id);
+
+    	return view('tweet.show', compact('tweet'));
     }
 
 
