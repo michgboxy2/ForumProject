@@ -3,14 +3,14 @@
 
  @section('content')
 
- <form class="form-horizontal" method="POST" action="/home">
+ <form class="form-horizontal" method="POST" action="/tweet">
     {{  csrf_field() }}
       <fieldset>
         
         <div class="form-group col-lg-6 col-sm-6">
         <label for="textArea col-lg-6"  class="form-control-label">what's on your mind</label>
 
-        <textarea class="form-control" rows="3" col="2" id="textArea"></textarea>
+        <textarea class="form-control" rows="3" col="2" id="textArea" name="tweet"></textarea>
         <br>
 
         <input type="submit" name="button" class="btn btn-primary btn-sm"> 
