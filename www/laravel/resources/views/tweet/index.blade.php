@@ -12,8 +12,11 @@
 
         <textarea class="form-control" rows="3" col="2" id="textArea" name="tweet"></textarea>
         <br>
+        <div class="form-group">
 
         <input type="submit" name="button" class="btn btn-primary btn-sm"> 
+
+      </div>
                  
       </div>
 
@@ -21,24 +24,27 @@
 
 
     </form>
+    @include('layout.errors')
 
  <div class="col-lg-6 col-sm-6">
    
     <div class="container">
       <div class="row">
-        <div class="user col-lg-12 bg-color-primary glyphicon">
-       <p class="id" font-family="pixel">Elufioye Michael<a href="#" class="id">@Michael</a> ..2hrs</p>
-       </div>
-        <h5><p class="space jumbotron" font-family="Serif">let's settle this twitter, awa niyennnnnnnnn....
-          so,let's do this one and fucking for all.. you dig guyz? let's settle this twitter, awa niyennnnnnnnn....
+        
+       @foreach($tweet as $tweet)
+        @include('tweet.tweets')
+
+        
           <div class="buttons">
-        <a class="edit btn btn-primary btn-sm" href="#">comment</a>
-            <a class="edit btn btn-primary btn-sm" href="#">like</a>
-            <a class="edit btn btn-primary btn-sm" href="#">reply</a>
+        <a class="edit btn btn-primary btn-sm" href="/tweet/{{$tweet->id}}">comment</a>
+            <a class="edit btn btn-primary btn-sm" href="/{{$tweet->id}}">like</a>
+            <a class="edit btn btn-primary btn-sm" href="/{{$tweet->id}}">reply</a>
 
           </div>
 
-        </p></h5>
+          @endforeach
+
+        
         
     </div>
 
