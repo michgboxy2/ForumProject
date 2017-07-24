@@ -11,7 +11,7 @@ class TweetController extends Controller
     public function index()
 
     {
-    	$tweet = tweet::all();
+    	$tweet = tweet::latest()->get();
     	return view('tweet.index', compact('tweet'));
     }
 
@@ -36,10 +36,9 @@ class TweetController extends Controller
     }
 
 
-    public function show($id)
+    public function show(tweet $tweet)
 
     {
-    	$tweet = tweet::find($id);
 
     	return view('tweet.show', compact('tweet'));
     }
