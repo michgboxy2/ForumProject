@@ -5,35 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\comment;
-use App\post;
-use App\Http\Requests\ValidateComments;
+use App\tweet;
+
 
 class CommentController extends Controller
 {
-    public function show($id){
-        $comments = comment::find($id);
-        return view('posts.view', compact('comments'));
-    }
+   public function store(tweet $tweet){
 
-   public function store(ValidateComments $request, $id){
-        //validate the form
-        
-    
-        $post = new post;
-        
-        $comment = comment::create([
+    $this->validate(request(), ['comment' => 'required|min:2']);
+
+    $tweet->addcomment(request('comment'));
+
+    return back();
 
 
 
-            "post_id" => $id,
-
-            "comments" => $request('comments')
-            ]);
-
-        
-
-        return redirect("/post/".$post->id)->withMessage("comment successfully added");
-
-
-    }
+   } 
 }
