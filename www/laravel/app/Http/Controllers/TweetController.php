@@ -8,6 +8,13 @@ use App\tweet;
 
 class TweetController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
 
     {
@@ -29,7 +36,19 @@ class TweetController extends Controller
 
     	$tweet = new tweet;
 
-    	tweet::create(request(['tweet']));
+    	auth()->User()->publish(
+
+            new tweet(request(['tweet'])));
+
+        // tweet::create([
+
+        //     'tweet' => request('tweet'),
+        //     'user_id' => auth()->id()
+
+
+
+
+        //     ]);
     	
     	return redirect('/');
 
