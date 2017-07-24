@@ -20,12 +20,16 @@
 
 
 
-Route::get('/', 'TweetController@index');
+Route::get('/', 'TweetController@index')->name('home');
 Route::post('/tweet', 'TweetController@store');
 Route::get('/tweet/{tweet}', 'TweetController@show');
 Route::post('/tweet/{tweet}', 'CommentController@store');
 Route::get('/register', 'RegisterationController@create');
+Route::post('/register', 'RegisterationController@store');
+
 Route::get('/login', 'SessionsController@create');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');
 
 	
 
