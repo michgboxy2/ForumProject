@@ -23,6 +23,10 @@
 Route::get('/', 'TweetController@index');
 Route::post('/tweet', 'TweetController@store');
 Route::get('/tweet/{tweet}', 'TweetController@show');
+Route::post('/tweet/{tweet}', 'CommentController@store');
+Route::get('/register', 'RegisterationController@create');
+Route::get('/login', 'SessionsController@create');
+
 	
 
 
