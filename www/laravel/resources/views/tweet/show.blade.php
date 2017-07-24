@@ -33,7 +33,7 @@
     	@foreach($tweet->comments as $comment)
         
         <div class="user col-lg-12 bg-color-primary glyphicon">
-       <p class="id" font-family="pixel">Tina<a href="#" class="id">@TinaTweets</a>
+       <p class="id" font-family="pixel">Tina<a href="#" class="id">{{Auth::User()->name}}</a>
 
        	{{$comment->created_at->diffForHumans()}} : &nbsp</p>
        </div>
