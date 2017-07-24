@@ -32,4 +32,19 @@ class User extends Authenticatable
 
         return $this->hasMany(tweet::class);
     }
+
+    public function publish(tweet $tweet)
+
+    {
+        $this->tweet()->save($tweet);
+         // tweet::create([
+
+        //     'tweet' => request('tweet'),
+        //     'user_id' => auth()->id()
+
+
+
+
+        //     ]);
+    }
 }
